@@ -1,0 +1,24 @@
+[build-system]
+requires = ['setuptools', 'setuptools-scm']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'flake8-py-compile'
+description = 'A flake8 plugin for that runs the py_compile module of cpython and checks for all syntax errors during byte code conversion'
+version='0.1.0'
+requires-python = '>=3.9'
+readme = {file = 'README.md', content-type = 'text/markdown'}
+urls = {github='https://github.com/samety/flake8-py-compile'}
+keywords = [ 'flake8', 'flake8.plugin', 'flake8.extension' ] 
+license = {text='Apache License Version 2.0'}
+classifiers = [
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3 :: Only',
+    'License :: OSI Approved :: Apache Software License',
+]
+
+[options]
+py_modules = 'run_py_compile'
+
+[project.entry-points.'flake8.extension']
+LAC = 'run_py_compile:PyCompileChecker'
