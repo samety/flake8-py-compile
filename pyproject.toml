@@ -4,7 +4,7 @@ build-backend = 'setuptools.build_meta'
 
 [project]
 name = 'flake8-py-compile'
-description = 'A flake8 plugin for that runs the py_compile module of cpython and checks for all syntax errors during byte code conversion'
+description = 'A flake8 plugin for that runs the py_compile module of cpython and checks for all syntax errors during the byte code conversion'
 version='0.1.0'
 requires-python = '>=3.9'
 readme = {file = 'README.md', content-type = 'text/markdown'}
