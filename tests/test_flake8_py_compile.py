@@ -1,3 +1,4 @@
+import ast
 import pytest
 from pathlib import Path
 
@@ -20,13 +21,13 @@ def fake_source_file_with_error(tmp_path: Path) -> Path:
 
 
 def test_py_compile_check_empty_file_expect_no_err(fake_empty_file: Path) -> None:
-    checker = PyCompileChecker(None, fake_empty_file)
+    checker = PyCompileChecker(ast.parse(''), str(fake_empty_file))
     errors = list(checker.run())
     assert len(errors) == 0
 
 
 def test_py_compile_check_faulty_file_expect_error(fake_source_file_with_error: Path) -> None:
-    checker = PyCompileChecker(None, fake_source_file_with_error)
+    checker = PyCompileChecker(ast.parse(''), str(fake_source_file_with_error))
     errors = list(checker.run())
     assert len(errors) == 1
     lineno, offset, msg, _ = errors[0]

@@ -17,5 +17,7 @@ class PyCompileChecker:
             underlying_error = err.exc_value
             if not isinstance(underlying_error, SyntaxError):
                 raise
+            if not isinstance(underlying_error.lineno, int) or not isinstance(underlying_error.offset, int):
+                raise
             msg = f'PYC001 SyntaxError: {underlying_error.args[0]}'
             yield underlying_error.lineno, underlying_error.offset, msg, type(self)
